@@ -24,8 +24,9 @@ type Bkex struct {
 	Name    string `bson:"name"`
 	Website string `bson:"website"`
 
-	API_KEY    string
-	API_SECRET string
+	API_KEY       string
+	API_SECRET    string
+	TradePassword string
 
 	Source    exchange.DataSource // / exchange API / microservicve api 1 / PSQL
 	SourceURI string
@@ -46,10 +47,11 @@ func CreateBkex(config *exchange.Config) *Bkex {
 			Name:    "Bkex",
 			Website: "https://www.bkex.com/",
 
-			API_KEY:    config.API_KEY,
-			API_SECRET: config.API_SECRET,
-			Source:     config.Source,
-			SourceURI:  config.SourceURI,
+			API_KEY:       config.API_KEY,
+			API_SECRET:    config.API_SECRET,
+			TradePassword: config.TradePassword,
+			Source:        config.Source,
+			SourceURI:     config.SourceURI,
 		}
 
 		balanceMap = cmap.New()

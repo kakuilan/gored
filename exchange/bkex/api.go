@@ -257,7 +257,7 @@ func (e *Bkex) Withdraw(coin *coin.Coin, quantity float64, addr, tag string) boo
 	mapParams := make(map[string]string)
 	mapParams["coinType"] = e.GetSymbolByCoin(coin)
 	mapParams["txAddress"] = addr
-	mapParams["password"] = ""
+	mapParams["password"] = e.TradePassword
 	mapParams["amount"] = strconv.FormatFloat(quantity, 'f', -1, 64)
 
 	jsonSubmitWithdraw := e.ApiKeyGet(strRequestPath, mapParams)
